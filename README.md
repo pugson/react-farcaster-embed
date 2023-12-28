@@ -6,6 +6,9 @@ Display an embedded cast from Farcaster in your React app. Works with Next.js SS
 
 [Demo](https://wojtek.im/journal/react-farcaster-embed-casts-in-your-react-app)
 
+![PixelSnap 2023-12-29 at 12 59 17 AM@2x](https://github.com/pugson/react-farcaster-embed/assets/6843656/9c8d658e-91a1-49ed-9b4b-d59497052823)
+
+
 ## Installation
 
 ```shell
