@@ -4,6 +4,8 @@
 
 Display an embedded cast from Farcaster in your React app. Works with Next.js SSR.
 
+[Demo](https://wojtek.im/journal/react-farcaster-embed-casts-in-your-react-app)
+
 ## Installation
 
 ```shell
