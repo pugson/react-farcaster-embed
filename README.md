@@ -46,10 +46,9 @@ Follow me on [Farcaster](https://farcaster.com/pugson) or [Twitter](https://twit
 
 Send me a tip in ETH to
 
-- `pugson.eth` or
+- `pugson.eth`
 - `0x96a77560146501eAEB5e6D5B7d8DD1eD23DEfa23`
 
 ### Other projects
 
 You might also like [ENS Data](https://ensdata.net) for getting ENS records and avatars or [ABI Data](https://abidata.net) for grabbing smart contract ABIs remotely.
-# react-farcaster-embed
