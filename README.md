@@ -8,6 +8,15 @@ Display an embedded cast from Farcaster in your React app. Works with Next.js SS
 
 ![PixelSnap 2023-12-29 at 12 59 17 AM@2x](https://github.com/pugson/react-farcaster-embed/assets/6843656/9c8d658e-91a1-49ed-9b4b-d59497052823)
 
+## Features
+
+- [x] Shows the cast's author, their avatar and username, date when the cast was posted
+- [x] Renders the cast's content with links
+- [x] Shows the channel name and avatar
+- [x] Shows counts for replies, likes, recasts, watches
+- [x] Adds a link to the cast on Warpcast
+- [ ] Renders images inline 
+
 
 ## Installation
 
