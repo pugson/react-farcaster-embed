@@ -1,4 +1,4 @@
-![react-farcaster-embed](https://wojtek.im/farcaster/react-farcaster-embed.png)
+![react-farcaster-embed](https://wojtek.im/farcaster/react-farcaster-embed-v2.png)
 
 # react-farcaster-embed
 
