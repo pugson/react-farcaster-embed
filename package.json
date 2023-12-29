@@ -1,6 +1,6 @@
 {
   "name": "react-farcaster-embed",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Embed casts from Farcaster in your React app.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
