@@ -10,7 +10,9 @@
   ],
   "scripts": {
     "build": "cp src/styles.css dist && tsup src/index.tsx",
-    "dev": "cp src/styles.css dist && tsup src/index.tsx --watch",
+    "watch:ts": "tsup src/index.tsx --watch",
+    "watch:css": "nodemon --watch src/styles.css --exec 'cp src/styles.css dist/'",
+    "dev": "concurrently 'pnpm:watch:*'",
     "format": "prettier --write ."
   },
   "keywords": [
@@ -29,10 +31,11 @@
     "url": "https://github.com/pugson/react-farcaster-embed/issues"
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "eslint": "^7.32.0",
+    "nodemon": "^3.0.2",
     "prettier": "^2.8.8",
     "tsup": "^6.7.0",
-    "turbo": "^1.11.2",
     "typescript": "^5.3.3"
   },
   "peerDependencies": {
