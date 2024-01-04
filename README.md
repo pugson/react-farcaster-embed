@@ -4,9 +4,16 @@
 
 Display an embedded cast from Farcaster in your React app. Works with Next.js SSR.
 
-[Demo](https://wojtek.im/journal/react-farcaster-embed-casts-in-your-react-app)
+[Live Demo](https://wojtek.im/journal/react-farcaster-embed-casts-in-your-react-app)
 
-![PixelSnap 2023-12-29 at 12 59 17 AM@2x](https://github.com/pugson/react-farcaster-embed/assets/6843656/9c8d658e-91a1-49ed-9b4b-d59497052823)
+| Regular casts | With images |
+| ------------- | ----------- |
+| ![PixelSnap 2023-12-29 at 12 59 17 AM@2x](https://github.com/pugson/react-farcaster-embed/assets/6843656/9c8d658e-91a1-49ed-9b4b-d59497052823) | ![PixelSnap 2024-01-04 at 3 09 21 AM@2x](https://github.com/pugson/react-farcaster-embed/assets/6843656/7ba61dc8-6b46-4721-a686-31f8d5c2cfda) |
+
+
+
+
+
 
 ## Features
 
