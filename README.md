@@ -13,10 +13,10 @@ Display an embedded cast from Farcaster in your React app. Works with Next.js SS
 - [x] Shows the cast's author, their avatar and username, date when the cast was posted
 - [x] Renders the cast's content with links
 - [x] Shows the channel name and avatar
-- [x] Shows counts for replies, likes, recasts, watches
+- [x] Shows counts for replies, likes, recasts + quotes, watches
 - [x] Adds a link to the cast on Warpcast
-- [ ] Renders images inline 
-
+- [x] Renders images inline
+- [ ] Renders rich embeds for links
 
 ## Installation
 

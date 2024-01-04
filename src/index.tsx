@@ -1,6 +1,13 @@
 import React from "react";
 import Linkify from "linkify-react";
 
+type CastImage = {
+  type: string;
+  url: string;
+  sourceUrl: string;
+  alt: string;
+};
+
 const linkifyOptions = {
   className: "farcaster-embed-body-link",
   target: "_blank",
@@ -58,6 +65,12 @@ export async function FarcasterEmbed({ url, username, hash }: { url?: string; us
   } as Intl.DateTimeFormatOptions;
   const timestamp = publishedAt.toLocaleString("en-US", options);
   const warpcastUrl = `https://warpcast.com/${author.username}/${cast.hash}`;
+  const replies = cast.replies && cast.replies.count;
+  const likes = cast.reactions && cast.reactions.count;
+  const recasts = cast.combinedRecastCount ? cast.combinedRecastCount : cast.recasts.count;
+  const watches = cast.watches && cast.watches.count;
+  const images = cast.embeds && cast.embeds.images;
+  const hasImages = images && images.length > 0;
 
   return (
     <div className="not-prose farcaster-embed-container">
@@ -83,6 +96,17 @@ export async function FarcasterEmbed({ url, username, hash }: { url?: string; us
         <Linkify as="p" options={linkifyOptions}>
           {cast.text}
         </Linkify>
+        {hasImages && (
+          <div className="farcaster-embed-image-container">
+            {images.map((image: CastImage) => {
+              return (
+                <a key={image.url} href={image.url} target="_blank" className="farcaster-embed-image-link">
+                  <img src={image.url} alt={image.alt} className="farcaster-embed-image" />
+                </a>
+              );
+            })}
+          </div>
+        )}
       </div>
       {cast.tags.length > 0 && (
         <div>
@@ -104,19 +128,19 @@ export async function FarcasterEmbed({ url, username, hash }: { url?: string; us
         <ul>
           <li>
             <ReplyIcon />
-            <span>{cast.replies.count}</span>
+            <span>{replies.toLocaleString("en-US")}</span>
           </li>
           <li>
             <RecastIcon />
-            <span>{cast.recasts.count}</span>
+            <span>{recasts.toLocaleString("en-US")}</span>
           </li>
           <li>
             <LikeIcon />
-            <span>{cast.reactions.count}</span>
+            <span>{likes.toLocaleString("en-US")}</span>
           </li>
           <li>
             <WatchIcon />
-            <span>{cast.replies.count}</span>
+            <span>{watches.toLocaleString("en-US")}</span>
           </li>
         </ul>
         <div className="farcaster-embed-warpcast-icon">
