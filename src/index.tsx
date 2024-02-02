@@ -54,6 +54,7 @@ export async function FarcasterEmbed({ url, username, hash }: { url?: string; us
 
   const cast = await getCast(username, hash);
   const author = cast.author;
+  const profileUrl = `https://warpcast.com/${author.username}`;
   const publishedAt = new Date(cast.timestamp);
   const options = {
     year: "numeric",
@@ -77,7 +78,7 @@ export async function FarcasterEmbed({ url, username, hash }: { url?: string; us
   return (
     <div className="not-prose farcaster-embed-container">
       <div className="farcaster-embed-metadata">
-        <div>
+        <a href={profileUrl} className="farcaster-embed-avatar-link">
           <img
             src={author.pfp.url}
             alt={`@${author.username}`}
@@ -85,7 +86,7 @@ export async function FarcasterEmbed({ url, username, hash }: { url?: string; us
             height={48}
             className="farcaster-embed-author-avatar"
           />
-        </div>
+        </a>
         <div className="farcaster-embed-author">
           <p className="farcaster-embed-author-display-name">{author.displayName}</p>
           <p className="farcaster-embed-author-username">@{author.username}</p>
@@ -143,20 +144,28 @@ export async function FarcasterEmbed({ url, username, hash }: { url?: string; us
       <div className="farcaster-embed-stats">
         <ul>
           <li>
-            <ReplyIcon />
-            <span>{replies.toLocaleString("en-US")}</span>
+            <a className="farcaster-embed-stats-link" href={warpcastUrl} target="_blank">
+              <ReplyIcon />
+              <span>{replies.toLocaleString("en-US")}</span>
+            </a>
           </li>
           <li>
-            <RecastIcon />
-            <span>{recasts.toLocaleString("en-US")}</span>
+            <a className="farcaster-embed-stats-link" href={warpcastUrl} target="_blank">
+              <RecastIcon />
+              <span>{recasts.toLocaleString("en-US")}</span>
+            </a>
           </li>
           <li>
-            <LikeIcon />
-            <span>{likes.toLocaleString("en-US")}</span>
+            <a className="farcaster-embed-stats-link" href={warpcastUrl} target="_blank">
+              <LikeIcon />
+              <span>{likes.toLocaleString("en-US")}</span>
+            </a>
           </li>
           <li>
-            <WatchIcon />
-            <span>{watches.toLocaleString("en-US")}</span>
+            <a className="farcaster-embed-stats-link" href={warpcastUrl} target="_blank">
+              <WatchIcon />
+              <span>{watches.toLocaleString("en-US")}</span>
+            </a>
           </li>
         </ul>
         <div className="farcaster-embed-warpcast-icon">
