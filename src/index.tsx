@@ -1,5 +1,5 @@
-import React from "react";
 import Linkify from "linkify-react";
+import { VideoPlayer } from "./components/video-player";
 
 type CastImage = {
   type: string;
@@ -71,6 +71,8 @@ export async function FarcasterEmbed({ url, username, hash }: { url?: string; us
   const watches = cast.watches && cast.watches.count;
   const images = cast.embeds && cast.embeds.images;
   const hasImages = images && images.length > 0;
+  const hasVideos = cast.embeds && cast.embeds.videos && cast.embeds.videos.length > 0;
+  const videos = cast.embeds && cast.embeds.videos;
 
   return (
     <div className="not-prose farcaster-embed-container">
@@ -103,6 +105,20 @@ export async function FarcasterEmbed({ url, username, hash }: { url?: string; us
                 <a key={image.url} href={image.url} target="_blank" className="farcaster-embed-image-link">
                   <img src={image.url} alt={image.alt} className="farcaster-embed-image" />
                 </a>
+              );
+            })}
+          </div>
+        )}
+        {hasVideos && (
+          <div className="farcaster-embed-video-container">
+            {videos.map((video) => {
+              return (
+                <VideoPlayer
+                  key={video.url}
+                  source={video.sourceUrl}
+                  aspectRatio={video.width / video.height}
+                  poster={video.thumbnailUrl}
+                />
               );
             })}
           </div>
