@@ -8,6 +8,16 @@ type CastImage = {
   alt: string;
 };
 
+type CastVideo = {
+  type: "video";
+  url: string;
+  sourceUrl: string;
+  width: number;
+  height: number;
+  duration: number;
+  thumbnailUrl: string;
+};
+
 const linkifyOptions = {
   className: "farcaster-embed-body-link",
   target: "_blank",
@@ -54,7 +64,7 @@ export async function FarcasterEmbed({ url, username, hash }: { url?: string; us
 
   const cast = await getCast(username, hash);
   const author = cast.author;
-  const profileUrl = `https://warpcast.com/${author.username}`;
+  const profileUrl = `https://warpcast.com/~/profiles/${author.fid}`;
   const publishedAt = new Date(cast.timestamp);
   const options = {
     year: "numeric",
@@ -112,7 +122,7 @@ export async function FarcasterEmbed({ url, username, hash }: { url?: string; us
         )}
         {hasVideos && (
           <div className="farcaster-embed-video-container">
-            {videos.map((video) => {
+            {videos.map((video: CastVideo) => {
               return (
                 <VideoPlayer
                   key={video.url}
