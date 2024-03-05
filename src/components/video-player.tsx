@@ -14,6 +14,7 @@ export function VideoPlayer({ source, poster, aspectRatio }: { source: string; p
               slot="media"
               volume="1"
               crossorigin
+              playsinline
             ></hls-video>
             <media-poster-image
               slot="poster"
