@@ -1,7 +1,15 @@
 "use client";
 import React from "react";
 
-export function VideoPlayer({ source, poster, aspectRatio }: { source: string; poster: string; aspectRatio: number }) {
+export function VideoPlayerClient({
+  source,
+  poster,
+  aspectRatio,
+}: {
+  source: string;
+  poster: string;
+  aspectRatio: number;
+}) {
   const [isMediaChromeLoaded, setIsMediaChromeLoaded] = React.useState(false);
   const [isHlsVideoElementLoaded, setIsHlsVideoElementLoaded] = React.useState(false);
 
