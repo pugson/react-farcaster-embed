@@ -6,7 +6,7 @@ export const getCast = async (username: string, hash: string) => {
     const cast = await res.json();
 
     // Handle weird reply to a cast in a channel returning the original cast.
-    if (cast.result.casts[2].text) {
+    if (cast.result.casts[2] && cast.result.casts[2].text) {
       return cast.result.casts[2];
     }
 
