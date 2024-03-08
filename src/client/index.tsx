@@ -29,8 +29,6 @@ export function FarcasterEmbed({ url, username, hash }: { url?: string; username
     const fetchCast = async () => {
       const cast = await getCast(username, hash);
       setCastData(cast);
-
-      console.log(cast);
     };
 
     fetchCast();

@@ -5,6 +5,11 @@ export const getCast = async (username: string, hash: string) => {
     );
     const cast = await res.json();
 
+    // Handle weird reply to a cast in a channel returning the original cast.
+    if (cast.result.casts[2].text) {
+      return cast.result.casts[2];
+    }
+
     // Handle skipping root-embed casts which are empty parents for a cast in a channel.
     if (cast.result.casts[0].castType === "root-embed") {
       return cast.result.casts[1];
