@@ -6,9 +6,14 @@ export const getCast = async (username: string, hash: string) => {
     const cast = await res.json();
 
     // Handle weird reply to a cast in a channel returning the original cast.
-    // We need to check if the username is matching the author of the cast to render the right one.
+    // We need to check if the username and hash are matching the linked cast to render the right one.
     // Very weird API, but it's the only way to get the right cast.
-    if (cast.result.casts[2] && cast.result.casts[2].text && cast.result.casts[2].author.username === username) {
+    if (
+      cast.result.casts[2] &&
+      cast.result.casts[2].text &&
+      cast.result.casts[2].author.username === username &&
+      cast.result.casts[2].hash === hash
+    ) {
       return cast.result.casts[2];
     }
 
