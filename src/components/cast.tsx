@@ -1,5 +1,5 @@
 import Linkify from "linkify-react";
-import { ReplyIcon, RecastIcon, LikeIcon, WatchIcon, WarpcastIcon } from "./icons";
+import { ReplyIcon, RecastIcon, LikeIcon, BookmarkIcon, WarpcastIcon } from "./icons";
 import { VideoPlayer } from "./video-player";
 import { VideoPlayerClient } from "../client/video-player-client";
 import type { CastData, CastImage, CastVideo } from "../types";
@@ -127,7 +127,7 @@ export function CastEmbed({ cast, client }: { cast: CastData; client?: boolean }
           </li>
           <li>
             <a className="farcaster-embed-stats-link" href={warpcastUrl} target="_blank">
-              <WatchIcon />
+              <BookmarkIcon />
               <span>{watches.toLocaleString("en-US")}</span>
             </a>
           </li>

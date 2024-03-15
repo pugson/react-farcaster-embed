@@ -48,7 +48,7 @@ export const LikeIcon = () => (
   </svg>
 );
 
-export const WatchIcon = () => (
+export const BookmarkIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="16"
@@ -60,8 +60,7 @@ export const WatchIcon = () => (
     strokeLinecap="round"
     strokeLinejoin="round"
   >
-    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-    <circle cx="12" cy="12" r="3"></circle>
+    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
   </svg>
 );
 
