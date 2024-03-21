@@ -1,7 +1,7 @@
 export const getCast = async (username: string, hash: string) => {
   try {
     const res = await fetch(
-      `https://client.warpcast.com/v2/user-thread-casts?castHashPrefix=${hash}&username=${username}&limit=3`,
+      `https://farcaster.tv/v2/user-thread-casts?castHashPrefix=${hash}&username=${username}&limit=3`,
     );
     const cast = await res.json();
 
