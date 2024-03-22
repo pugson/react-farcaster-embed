@@ -7,6 +7,7 @@ export function VideoPlayer({ source, poster, aspectRatio }: { source: string; p
     >
       <div
         className="farcaster-embed-video-player"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{
           __html: `<script type="module" src="https://cdn.jsdelivr.net/npm/media-chrome@1/+esm"></script><script type="module" src="https://cdn.jsdelivr.net/npm/hls-video-element@1.0/+esm"></script><media-controller>
             <hls-video
