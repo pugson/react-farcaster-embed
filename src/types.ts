@@ -66,6 +66,7 @@ export type CastData = {
   mentions?: any[];
   attachments?: any;
   embeds?: {
+    casts?: CastData[];
     images?: CastImage[];
     urls?: CastUrl[];
     videos?: CastVideo[];
