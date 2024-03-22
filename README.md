@@ -4,11 +4,37 @@
 
 Display an embedded cast from Farcaster in your React app. Works with Next.js SSR.
 
+## Examples
+
 [Live Demo](https://wojtek.im/journal/react-farcaster-embed-casts-in-your-react-app)
 
-| Regular casts                                                                                                                                  | With images                                                                                                                                   |
-| ---------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![PixelSnap 2023-12-29 at 12 59 17 AM@2x](https://github.com/pugson/react-farcaster-embed/assets/6843656/9c8d658e-91a1-49ed-9b4b-d59497052823) | ![PixelSnap 2024-01-04 at 3 09 21 AM@2x](https://github.com/pugson/react-farcaster-embed/assets/6843656/7ba61dc8-6b46-4721-a686-31f8d5c2cfda) |
+<details>
+  <summary>Regular casts</summary>
+  <img src="https://github.com/pugson/react-farcaster-embed/assets/6843656/9c8d658e-91a1-49ed-9b4b-d59497052823" />
+</details>
+
+<details>
+  <summary>Quoted casts</summary>
+  <img src="https://github.com/pugson/react-farcaster-embed/assets/6843656/50bb8f9d-6041-4c98-a854-8d73df2e82d2" />
+</details>
+
+<details>
+  <summary>With images</summary>
+  <img src="https://github.com/pugson/react-farcaster-embed/assets/6843656/7ba61dc8-6b46-4721-a686-31f8d5c2cfda" />
+</details>
+
+<details>
+  <summary>With video</summary>
+  <img src="https://github.com/pugson/react-farcaster-embed/assets/6843656/fc58fc4e-8c86-400c-81dc-89fe9a050092" />
+</details>
+
+<details>
+  <summary>With link previews</summary>
+  <img src="https://github.com/pugson/react-farcaster-embed/assets/6843656/a61783de-eb68-481c-b215-c1933d3d6925" />
+</details>
+
+
+
 
 ## Features
 
