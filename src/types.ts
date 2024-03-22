@@ -15,6 +15,19 @@ export type CastVideo = {
   thumbnailUrl: string;
 };
 
+export type CastUrl = {
+  type: "url";
+  openGraph?: {
+    description?: string;
+    domain?: string;
+    image?: string;
+    sourceUrl?: string;
+    title?: string;
+    url?: string;
+    useLargeImage?: boolean;
+  };
+};
+
 export type CastData = {
   hash?: string;
   threadHash?: string;
@@ -54,7 +67,7 @@ export type CastData = {
   attachments?: any;
   embeds?: {
     images?: CastImage[];
-    urls?: any[];
+    urls?: CastUrl[];
     videos?: CastVideo[];
     unknowns?: any[];
     processedCastText?: string;
