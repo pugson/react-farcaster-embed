@@ -10,9 +10,8 @@ export const getCast = async (username: string, hash: string) => {
     // Very weird API, but it's the only way to get the right cast.
     if (
       cast.result.casts[2] &&
-      cast.result.casts[2].text &&
       cast.result.casts[2].author.username === username &&
-      cast.result.casts[2].hash === hash
+      cast.result.casts[2].hash.includes(hash)
     ) {
       return cast.result.casts[2];
     }
