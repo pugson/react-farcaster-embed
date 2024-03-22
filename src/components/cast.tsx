@@ -1,8 +1,8 @@
 import Linkify from "linkify-react";
 import { ReplyIcon, RecastIcon, LikeIcon, BookmarkIcon, WarpcastIcon } from "./icons";
-import { VideoPlayer } from "./video-player";
-import { VideoPlayerClient } from "../client/video-player-client";
-import type { CastData, CastImage, CastVideo } from "../types";
+import type { CastData } from "../types";
+import { CastImages } from "./cast-images";
+import { CastVideos } from "./cast-videos";
 
 const linkifyOptions = {
   className: "farcaster-embed-body-link",
@@ -82,38 +82,8 @@ export function CastEmbed({ cast, client }: { cast: CastData; client?: boolean }
         <Linkify as="p" options={linkifyOptions}>
           {stripLastEmbedUrlFromCastBody(cast.text, lastUrl)}
         </Linkify>
-        {hasImages && (
-          <div className="farcaster-embed-image-container">
-            {images.map((image: CastImage) => {
-              return (
-                <a key={image.url} href={image.url} target="_blank" className="farcaster-embed-image-link">
-                  <img src={image.url} alt={image.alt} className="farcaster-embed-image" />
-                </a>
-              );
-            })}
-          </div>
-        )}
-        {hasVideos && (
-          <div className="farcaster-embed-video-container">
-            {videos.map((video: CastVideo) => {
-              return client ? (
-                <VideoPlayerClient
-                  key={video.url}
-                  source={video.sourceUrl}
-                  aspectRatio={video.width / video.height}
-                  poster={video.thumbnailUrl}
-                />
-              ) : (
-                <VideoPlayer
-                  key={video.url}
-                  source={video.sourceUrl}
-                  aspectRatio={video.width / video.height}
-                  poster={video.thumbnailUrl}
-                />
-              );
-            })}
-          </div>
-        )}
+        {hasImages && <CastImages images={images} />}
+        {hasVideos && <CastVideos videos={videos} client={client} />}
         {hasUrls && (
           <div className="farcaster-embed-urls-container">
             {urls.map((item, index) => {
@@ -158,6 +128,10 @@ export function CastEmbed({ cast, client }: { cast: CastData; client?: boolean }
             {quoteCasts.map((quoteCast: CastData) => {
               const qcPublishedAt = new Date(quoteCast.timestamp);
               const qcTimestamp = qcPublishedAt.toLocaleString("en-US", timestampOptions);
+              const qcHasImages = quoteCast.embeds && quoteCast.embeds.images && quoteCast.embeds.images.length > 0;
+              const qcImages = quoteCast.embeds && quoteCast.embeds.images;
+              const qcHasVideos = quoteCast.embeds && quoteCast.embeds.videos && quoteCast.embeds.videos.length > 0;
+              const qcVideos = quoteCast.embeds && quoteCast.embeds.videos;
 
               return (
                 <div key={quoteCast.hash} className="farcaster-embed-quote-cast">
@@ -183,6 +157,8 @@ export function CastEmbed({ cast, client }: { cast: CastData; client?: boolean }
                     <Linkify as="p" options={linkifyOptions}>
                       {quoteCast.text}
                     </Linkify>
+                    {qcHasImages && <CastImages images={qcImages} />}
+                    {qcHasVideos && <CastVideos videos={qcVideos} />}
                   </div>
                 </div>
               );
