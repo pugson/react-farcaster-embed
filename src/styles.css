@@ -231,7 +231,8 @@
   transition: 0.15s ease opacity;
 }
 
-.farcaster-embed-url-link::before {
+.farcaster-embed-url-link::before,
+.farcaster-embed-quote-cast::before {
   width: calc(100% - 2px);
   height: 100%;
   z-index: 1;
