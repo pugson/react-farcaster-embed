@@ -13,6 +13,7 @@
     "watch:ts:client": "tsup src/client/index.tsx -d dist/client --watch",
     "watch:ts": "tsup src/index.tsx --watch",
     "watch:css": "nodemon --watch src/styles.css --exec 'cp src/styles.css dist/'",
+    "watch:yalc": "pnpm nodemon -w src -x 'yalc push' --ext 'tsx,ts,css,js,json'",
     "dev": "concurrently 'pnpm:watch:*'",
     "format": "prettier --write ."
   },
@@ -32,14 +33,14 @@
     "url": "https://github.com/pugson/react-farcaster-embed/issues"
   },
   "devDependencies": {
-    "@types/react": "^18.2.46",
-    "@types/react-dom": "^18.2.18",
+    "@types/react": "^18.2.67",
+    "@types/react-dom": "^18.2.22",
     "concurrently": "^8.2.2",
     "eslint": "^7.32.0",
-    "nodemon": "^3.0.2",
+    "nodemon": "^3.1.0",
     "prettier": "^2.8.8",
     "tsup": "^6.7.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.3"
   },
   "peerDependencies": {
     "react": "^16.8 || ^17.0 || ^18.0",
