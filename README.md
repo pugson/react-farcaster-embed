@@ -93,7 +93,7 @@ You can change the color of the component by changing its parent's color or addi
 
 Follow me on [Farcaster](https://farcaster.com/pugson) or [Twitter](https://twitter.com/pugson).
 
-Send me a tip in ETH to
+Send me a tip in ETH or $DEGEN to
 
 - `pugson.eth`
 - `0x96a77560146501eAEB5e6D5B7d8DD1eD23DEfa23`
