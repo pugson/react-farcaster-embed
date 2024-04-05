@@ -1,8 +1,6 @@
 export const getCast = async (username: string, hash: string) => {
   try {
-    const res = await fetch(
-      `https://farcaster.tv/v2/user-thread-casts?castHashPrefix=${hash}&username=${username}&limit=3`,
-    );
+    const res = await fetch(`https://farcaster.tv/${username}/${hash}`);
     const cast = await res.json();
 
     // Handle weird reply to a cast in a channel returning the original cast.
