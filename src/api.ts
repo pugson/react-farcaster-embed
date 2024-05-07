@@ -21,6 +21,7 @@ export const getCast = async (username: string, hash: string) => {
 
     return cast.result.casts[0];
   } catch (e) {
-    throw new Error("Unable to fetch cast.");
+    console.error(e);
+    throw new Error(`Unable to fetch cast ${hash} by ${username}.`);
   }
 };
