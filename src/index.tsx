@@ -1,6 +1,7 @@
 import "server-only";
 import { getCast } from "./api";
 import { CastEmbed } from "./components/cast";
+import { FarcasterEmbedOptions, defaultOptions } from "./options";
 
 /**
  * Renders a Farcaster embed for a cast. You can use two methods to render a Farcaster embed:
@@ -9,9 +10,20 @@ import { CastEmbed } from "./components/cast";
  * @param url Warpcast URL for the cast.
  * @param username Username of the cast author.
  * @param hash Hash of the cast.
+ * @param options Custom overrides. See FarcasterEmbedOptions type for available options.
  * @returns React JSX Component
  */
-export async function FarcasterEmbed({ url, username, hash }: { url?: string; username?: string; hash?: string }) {
+export async function FarcasterEmbed({
+  url,
+  username,
+  hash,
+  options,
+}: {
+  url?: string;
+  username?: string;
+  hash?: string;
+  options?: FarcasterEmbedOptions;
+}) {
   // If a URL is provided, parse the username and hash from it.
   if (url) {
     const urlParts = url.split("/");
@@ -25,5 +37,5 @@ export async function FarcasterEmbed({ url, username, hash }: { url?: string; us
 
   const cast = await getCast(username, hash);
 
-  return <CastEmbed cast={cast} />;
+  return <CastEmbed cast={cast} options={{ ...defaultOptions, ...options }} />;
 }

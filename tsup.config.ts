@@ -5,6 +5,6 @@ export default defineConfig({
   target: "esnext",
   external: ["react"],
   sourcemap: true,
-  dts: false,
+  dts: true,
   format: ["esm", "cjs"],
 });

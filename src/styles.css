@@ -7,10 +7,10 @@
 .farcaster-embed-container {
   position: relative;
   padding: 1.5rem !important;
-}
-
-.farcaster-embed-container + .farcaster-embed-container {
-  margin-top: 1.5rem !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .farcaster-embed-container::before {
@@ -37,6 +37,7 @@
   grid-gap: 0.75rem;
   align-items: center;
   line-height: 1.2;
+  container: metadata / inline-size;
 }
 
 .farcaster-embed-timestamp {
@@ -46,7 +47,7 @@
   line-height: 1.25rem;
 }
 
-@media (min-width: 400px) {
+@container metadata (min-width: 260px) {
   .farcaster-embed-metadata {
     grid-template-columns: 48px 1.5fr 1fr;
   }
@@ -232,6 +233,11 @@
   transition: 0.15s ease opacity;
 }
 
+.farcaster-embed-channel::before {
+  left: -1px;
+  bottom: -1px;
+}
+
 .farcaster-embed-url-link::before,
 .farcaster-embed-quote-cast::before {
   width: calc(100% - 2px);
@@ -264,6 +270,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  container: stats / inline-size;
 }
 
 .farcaster-embed-stats ul {
@@ -274,7 +281,7 @@
   margin-top: 1rem !important;
 }
 
-@media (min-width: 400px) {
+@container stats (min-width: 340px) {
   .farcaster-embed-stats {
     align-items: center;
   }
@@ -298,6 +305,9 @@
 .farcaster-embed-warpcast-icon {
   display: flex;
   items-align: center;
+  position: relative;
+  bottom: -0.25rem;
+  right: -0.25rem;
 }
 
 .farcaster-embed-warpcast-link {
@@ -350,7 +360,8 @@
 .farcaster-embed-quote-cast .farcaster-embed-author {
   display: flex;
   flex-direction: row;
-  gap: 0.5em;
+  column-gap: 0.125em;
+  flex-wrap: wrap;
 }
 
 .farcaster-embed-quote-cast .farcaster-embed-author p {

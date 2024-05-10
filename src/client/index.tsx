@@ -2,6 +2,7 @@
 import React from "react";
 import { CastEmbed } from "../components/cast";
 import { getCast } from "../api";
+import { FarcasterEmbedOptions, defaultOptions } from "../options";
 
 /**
  * Renders a Farcaster embed for a cast. You can use two methods to render a Farcaster embed:
@@ -10,9 +11,20 @@ import { getCast } from "../api";
  * @param url Warpcast URL for the cast.
  * @param username Username of the cast author.
  * @param hash Hash of the cast.
+ * @param options Custom overrides. See FarcasterEmbedOptions type for available options.
  * @returns React JSX Component
  */
-export function FarcasterEmbed({ url, username, hash }: { url?: string; username?: string; hash?: string }) {
+export function FarcasterEmbed({
+  url,
+  username,
+  hash,
+  options,
+}: {
+  url?: string;
+  username?: string;
+  hash?: string;
+  options?: FarcasterEmbedOptions;
+}) {
   const [castData, setCastData] = React.useState<any>(null);
   // If a URL is provided, parse the username and hash from it.
   if (url) {
@@ -36,5 +48,5 @@ export function FarcasterEmbed({ url, username, hash }: { url?: string; username
 
   if (!castData) return null;
 
-  return <CastEmbed cast={castData} client />;
+  return <CastEmbed cast={castData} client options={{ ...defaultOptions, ...options }} />;
 }
