@@ -58,7 +58,7 @@ pnpm add react-farcaster-embed
 
 ## Usage
 
-### Server Components
+### React Server Components / Next.js App Router
 
 Add these imports inside your server component:
 
@@ -74,7 +74,7 @@ import "react-farcaster-embed/dist/styles.css"; // include default styles or wri
 <FarcasterEmbed username="dwr" hash="0x48d47343" />
 ```
 
-### Client Components
+### Client Components / Next.js Pages Router
 
 Add the CSS import inside `_app.tsx` if you are using Next.js Pages Router:
 
