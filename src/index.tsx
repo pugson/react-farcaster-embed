@@ -35,7 +35,7 @@ export async function FarcasterEmbed({
     throw new Error("You must provide a Warpcast URL or username and hash to embed a cast.");
   }
 
-  const cast = await getCast(username, hash);
+  const cast = await getCast(username, hash, { customEndpoint: options?.customEndpoint });
 
   return <CastEmbed cast={cast} options={{ ...defaultOptions, ...options }} />;
 }

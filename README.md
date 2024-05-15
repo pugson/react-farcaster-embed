@@ -33,9 +33,6 @@ Display an embedded cast from Farcaster in your React app. Works with Next.js SS
   <img src="https://github.com/pugson/react-farcaster-embed/assets/6843656/a61783de-eb68-481c-b215-c1933d3d6925" />
 </details>
 
-
-
-
 ## Features
 
 - [x] Supports server components and client components
@@ -113,6 +110,31 @@ You can change the color of the component by changing its parent's color or addi
 .farcaster-embed-container {
   color: purple;
 }
+```
+
+## Custom Endpoint
+
+In case you need to self host the Warpcast Client API proxy, you can [fork this repo](https://github.com/pugson/farcaster-api-proxy) and set the `customEndpoint` option in the `FarcasterEmbed` component.
+
+Easiest way to do this is to make a wrapper component with that option applied. Example:
+
+```jsx
+import { FarcasterEmbed as FCEmbed } from "react-farcaster-embed";
+
+export const FarcasterEmbed = (props) => (
+  <FCEmbed
+    {...props}
+    options={{
+      customEndpoint: "https://your-endpoint.xyz/api/casts",
+    }}
+  />
+);
+```
+
+Casts will be fetched from your custom proxy instead of the default one using this URL structure. Make sure your proxy supports it.
+
+```jsx
+await fetch(`${options?.customEndpoint}/${username}/${hash}`);
 ```
 
 ## Found it useful?
