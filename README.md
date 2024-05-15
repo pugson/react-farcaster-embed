@@ -45,6 +45,7 @@ Display an embedded cast from Farcaster in your React app. Works with Next.js SS
 - [x] Renders videos inline
 - [x] Renders rich embeds for links
 - [x] Renders quoted casts with images and videos
+- [ ] Renders a frame preview with buttons
 
 ## Installation
 
