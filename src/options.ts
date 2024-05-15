@@ -1,6 +1,7 @@
 export type FarcasterEmbedOptions = {
-  timestampFormat: Intl.DateTimeFormatOptions;
-  timestampLocale: string;
+  timestampFormat?: Intl.DateTimeFormatOptions;
+  timestampLocale?: string;
+  customEndpoint?: string;
 };
 
 export const defaultOptions: FarcasterEmbedOptions = {
