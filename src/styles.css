@@ -61,6 +61,7 @@
 .farcaster-embed-author-avatar {
   display: inline-block;
   border-radius: 100%;
+  object-fit: cover;
 }
 
 .farcaster-embed-author p {
