@@ -3,6 +3,7 @@ import React from "react";
 import { CastEmbed } from "../components/cast";
 import { getCast } from "../api";
 import { FarcasterEmbedOptions, defaultOptions } from "../options";
+import { CastData } from "../types";
 
 /**
  * Renders a Farcaster embed for a cast. You can use two methods to render a Farcaster embed:
@@ -11,6 +12,7 @@ import { FarcasterEmbedOptions, defaultOptions } from "../options";
  * @param url Warpcast URL for the cast.
  * @param username Username of the cast author.
  * @param hash Hash of the cast.
+ * @param castData Optional cast data. If provided, the API call to fetch the cast data will be skipped.
  * @param options Custom overrides. See FarcasterEmbedOptions type for available options.
  * @returns React JSX Component
  */
@@ -18,14 +20,16 @@ export function FarcasterEmbed({
   url,
   username,
   hash,
+  castData,
   options,
 }: {
   url?: string;
   username?: string;
   hash?: string;
+  castData?: CastData;
   options?: FarcasterEmbedOptions;
 }) {
-  const [castData, setCastData] = React.useState<any>(null);
+  const [castJson, setCastJson] = React.useState<any>(null);
   // If a URL is provided, parse the username and hash from it.
   if (url) {
     const urlParts = url.split("/");
@@ -33,20 +37,27 @@ export function FarcasterEmbed({
     hash = urlParts[4];
   }
 
-  if (!username || !hash) {
-    throw new Error("You must provide a Warpcast URL or username and hash to embed a cast.");
+  if (!castData && (!username || !hash)) {
+    throw new Error(
+      "You must provide a Warpcast URL or username and hash to embed a cast. Or provide your own castData to render the component.",
+    );
   }
 
   React.useEffect(() => {
-    const fetchCast = async () => {
-      const cast = await getCast(username, hash);
-      setCastData(cast);
-    };
+    if (castData) {
+      setCastJson(castData);
+      return;
+    } else {
+      const fetchCast = async () => {
+        const cast = await getCast(username, hash);
+        setCastJson(cast);
+      };
 
-    fetchCast();
-  }, [username, hash]);
+      fetchCast();
+    }
+  }, [username, hash, castData]);
 
-  if (!castData) return null;
+  if (!castJson) return null;
 
-  return <CastEmbed cast={castData} client options={{ ...defaultOptions, ...options }} />;
+  return <CastEmbed cast={castJson} client options={{ ...defaultOptions, ...options }} />;
 }

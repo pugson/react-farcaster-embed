@@ -138,6 +138,16 @@ Casts will be fetched from your custom proxy instead of the default one using th
 await fetch(`${options?.customEndpoint}/${username}/${hash}`);
 ```
 
+## Feeding your own cast JSON into the component
+
+Warpcast's API will not return anything when the cast has been deleted, so this is useful if you want to display deleted casts from archival data using your own indexer. Use the `castData` prop to pass in the cast's JSON into the component to render.
+
+```jsx
+const data = { /* cast data coming from your own indexer or Neynar */ };
+
+<FarcasterEmbed castData={data} />
+```
+
 ## Found it useful?
 
 Follow me on [Farcaster](https://farcaster.com/pugson) or [Twitter](https://twitter.com/pugson).

@@ -6,7 +6,7 @@ export type CastImage = {
 };
 
 export type CastVideo = {
-  type: "video";
+  type: string;
   url: string;
   sourceUrl: string;
   width: number;
@@ -16,15 +16,57 @@ export type CastVideo = {
 };
 
 export type CastUrl = {
-  type: "url";
+  type: string;
   openGraph?: {
+    url?: string;
+    sourceUrl?: string;
+    title?: string;
     description?: string;
     domain?: string;
     image?: string;
-    sourceUrl?: string;
-    title?: string;
-    url?: string;
     useLargeImage?: boolean;
+  };
+};
+
+export type CastTags = {
+  type?: string;
+  id?: string;
+  name?: string;
+  imageUrl?: string;
+}[];
+
+export type AuthorProfileBio = {
+  text?: string;
+  mentions?: string[];
+  channelMentions?: any[];
+};
+
+export type AuthorProfileLocation = {
+  placeId?: string;
+  description?: string;
+};
+
+export type AuthorProfile = {
+  bio?: AuthorProfileBio;
+  location?: AuthorProfileLocation;
+};
+
+export type AuthorPfp = {
+  url?: string;
+  verified?: boolean;
+};
+
+export type Author = {
+  fid?: number;
+  username?: string;
+  displayName?: string;
+  pfp?: AuthorPfp;
+  profile?: AuthorProfile;
+  followerCount?: number;
+  followingCount?: number;
+  activeOnFcNetwork?: boolean;
+  viewerContext?: {
+    following?: boolean;
   };
 };
 
@@ -35,32 +77,7 @@ export type CastData = {
     type?: string;
     url?: string;
   };
-  author?: {
-    fid?: number;
-    username?: string;
-    displayName?: string;
-    pfp?: {
-      url?: string;
-      verified?: boolean;
-    };
-    profile?: {
-      bio?: {
-        text?: string;
-        mentions?: string[];
-        channelMentions?: any[];
-      };
-      location?: {
-        placeId?: string;
-        description?: string;
-      };
-    };
-    followerCount?: number;
-    followingCount?: number;
-    activeOnFcNetwork?: boolean;
-    viewerContext?: {
-      following?: boolean;
-    };
-  };
+  author?: Author;
   text?: string;
   timestamp?: number;
   mentions?: any[];
@@ -79,7 +96,7 @@ export type CastData = {
   };
   replies?: {
     count?: number;
-    casts?: any[];
+    casts?: CastData[];
   };
   reactions?: {
     count?: number;
@@ -90,12 +107,7 @@ export type CastData = {
   watches?: {
     count?: number;
   };
-  tags?: {
-    type?: string;
-    id?: string;
-    name?: string;
-    imageUrl?: string;
-  }[];
+  tags?: CastTags;
   viewCount?: number;
   quoteCount?: number;
   combinedRecastCount?: number;
@@ -103,6 +115,7 @@ export type CastData = {
   viewerContext?: {
     reacted?: boolean;
     recast?: boolean;
+    bookmarked?: boolean;
     watched?: boolean;
   };
 };
