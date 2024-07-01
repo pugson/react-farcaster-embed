@@ -22,7 +22,9 @@ export const getCast = async (username: string, hash: string, options?: { custom
     // And properly handle replies from the same author as the root cast.
     if (
       cast.result.casts[0].castType === "root-embed" ||
-      (cast.result.casts[1].hash.includes(hash) && cast.result.casts[1].author.username === username)
+      (cast.result.casts[1] &&
+        cast.result.casts[1].hash.includes(hash) &&
+        cast.result.casts[1].author.username === username)
     ) {
       return cast.result.casts[1];
     }
@@ -31,7 +33,7 @@ export const getCast = async (username: string, hash: string, options?: { custom
   } catch (e) {
     console.error(e);
     throw new Error(
-      `Unable to fetch cast ${hash} by ${username}.${
+      `Unable to fetch cast ${hash} by ${username} as it most likely does not exist anymore.${
         options?.customEndpoint &&
         " You are using a custom endpoint (" +
           options?.customEndpoint +
