@@ -19,7 +19,11 @@ export const getCast = async (username: string, hash: string, options?: { custom
     }
 
     // Handle skipping root-embed casts which are empty parents for a cast in a channel.
-    if (cast.result.casts[0].castType === "root-embed") {
+    // And properly handle replies from the same author as the root cast.
+    if (
+      cast.result.casts[0].castType === "root-embed" ||
+      (cast.result.casts[1].hash.includes(hash) && cast.result.casts[1].author.username === username)
+    ) {
       return cast.result.casts[1];
     }
 
