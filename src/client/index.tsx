@@ -49,7 +49,7 @@ export function FarcasterEmbed({
       return;
     } else {
       const fetchCast = async () => {
-        const cast = await getCast(username, hash);
+        const cast = await getCast(username, hash, { ...defaultOptions, ...options });
         setCastJson(cast);
       };
 

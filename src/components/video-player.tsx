@@ -1,4 +1,8 @@
 export function VideoPlayer({ source, poster, aspectRatio }: { source: string; poster: string; aspectRatio: number }) {
+  if (!source) {
+    return null;
+  }
+
   return (
     <div
       style={{

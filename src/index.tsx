@@ -41,7 +41,7 @@ export async function FarcasterEmbed({
     );
   }
 
-  const cast = castData ?? (await getCast(username, hash, { customEndpoint: options?.customEndpoint }));
+  const cast = castData ?? (await getCast(username, hash, { ...defaultOptions, ...options }));
 
   return <CastEmbed cast={cast} options={{ ...defaultOptions, ...options }} />;
 }

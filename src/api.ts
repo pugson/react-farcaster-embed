@@ -9,14 +9,18 @@ export const getCast = async (username: string, hash: string, options?: Farcaste
     );
     const cast = await res.json();
 
-    // Handle weird reply to a cast in a channel returning the original cast.
-    // We need to check if the username and hash are matching the linked cast to render the right one.
-    // Very weird API, but it's the only way to get the right cast.
+    if (cast.result.casts[0].hash === "0x0000000000000000000000000000000000000000") {
+      throw new Error("Root cast has been deleted.");
+    }
+
     if (
       cast.result.casts[2] &&
       cast.result.casts[2].author.username === username &&
       cast.result.casts[2].hash.includes(hash)
     ) {
+      // Handle weird reply to a cast in a channel returning the original cast.
+      // We need to check if the username and hash are matching the linked cast to render the right one.
+      // Very weird API, but it's the only way to get the right cast.
       return cast.result.casts[2];
     }
 
@@ -38,10 +42,11 @@ export const getCast = async (username: string, hash: string, options?: Farcaste
     if (!options?.silentError) {
       throw new Error(
         `Unable to fetch cast ${hash} by ${username} as it most likely does not exist anymore.${
-          options?.customEndpoint &&
-          " You are using a custom endpoint (" +
-            options?.customEndpoint +
-            "). Make sure it is correct and the server is running. For more info about the proxy server check the README."
+          options?.customEndpoint
+            ? " You are using a custom endpoint (" +
+              options?.customEndpoint +
+              "). Make sure it is correct and the server is running. For more info about the proxy server check the README."
+            : ""
         }`,
       );
     }

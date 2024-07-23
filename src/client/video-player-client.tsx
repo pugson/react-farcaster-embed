@@ -13,6 +13,10 @@ export function VideoPlayerClient({
   const [isMediaChromeLoaded, setIsMediaChromeLoaded] = React.useState(false);
   const [isHlsVideoElementLoaded, setIsHlsVideoElementLoaded] = React.useState(false);
 
+  if (!source) {
+    return null;
+  }
+
   const loadScript = (src: string) => {
     return new Promise((resolve, reject) => {
       const script = document.createElement("script");
