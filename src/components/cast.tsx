@@ -39,6 +39,8 @@ export function CastEmbed({
   client?: boolean;
   options: FarcasterEmbedOptions;
 }) {
+  if (!cast) return null;
+
   const author = cast.author;
   const profileUrl = `https://warpcast.com/~/profiles/${author.fid}`;
   const publishedAt = new Date(cast.timestamp);
