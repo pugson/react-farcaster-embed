@@ -1,4 +1,6 @@
-export const getCast = async (username: string, hash: string, options?: { customEndpoint?: string }) => {
+import type { FarcasterEmbedOptions } from "./options";
+
+export const getCast = async (username: string, hash: string, options?: FarcasterEmbedOptions) => {
   try {
     const res = await fetch(
       options?.customEndpoint
@@ -32,13 +34,16 @@ export const getCast = async (username: string, hash: string, options?: { custom
     return cast.result.casts[0];
   } catch (e) {
     console.error(e);
-    throw new Error(
-      `Unable to fetch cast ${hash} by ${username} as it most likely does not exist anymore.${
-        options?.customEndpoint &&
-        " You are using a custom endpoint (" +
-          options?.customEndpoint +
-          "). Make sure it is correct and the server is running. For more info about the proxy server check the README."
-      }`,
-    );
+
+    if (!options?.silentError) {
+      throw new Error(
+        `Unable to fetch cast ${hash} by ${username} as it most likely does not exist anymore.${
+          options?.customEndpoint &&
+          " You are using a custom endpoint (" +
+            options?.customEndpoint +
+            "). Make sure it is correct and the server is running. For more info about the proxy server check the README."
+        }`,
+      );
+    }
   }
 };

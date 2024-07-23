@@ -3,6 +3,7 @@ import { ReplyIcon, RecastIcon, LikeIcon, BookmarkIcon, WarpcastIcon } from "./i
 import type { CastData } from "../types";
 import { CastImages } from "./cast-images";
 import { CastVideos } from "./cast-videos";
+import type { FarcasterEmbedOptions } from "../options";
 
 const linkifyOptions = {
   className: "farcaster-embed-body-link",
@@ -29,7 +30,15 @@ function stripLastEmbedUrlFromCastBody(source: string, target: string) {
   }
 }
 
-export function CastEmbed({ cast, client, options }: { cast: CastData; client?: boolean; options: any }) {
+export function CastEmbed({
+  cast,
+  client,
+  options,
+}: {
+  cast: CastData;
+  client?: boolean;
+  options: FarcasterEmbedOptions;
+}) {
   const author = cast.author;
   const profileUrl = `https://warpcast.com/~/profiles/${author.fid}`;
   const publishedAt = new Date(cast.timestamp);

@@ -148,6 +148,25 @@ const data = { /* cast data coming from your own indexer or Neynar */ };
 <FarcasterEmbed castData={data} />
 ```
 
+## Prevent errors for deleted casts
+
+You can use the `silentError` option to prevent errors from being thrown when the cast is deleted or unable to be fetched.
+
+Easiest way to do this is to make a wrapper component with that option applied. Example:
+
+```jsx
+import { FarcasterEmbed as FCEmbed } from "react-farcaster-embed";
+
+export const FarcasterEmbed = (props) => (
+  <FCEmbed
+    {...props}
+    options={{
+      silentError: true,
+    }}
+  />
+);
+```
+
 ## Found it useful?
 
 Follow me on [Farcaster](https://farcaster.com/pugson) or [Twitter](https://twitter.com/pugson).

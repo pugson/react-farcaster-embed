@@ -2,6 +2,7 @@ export type FarcasterEmbedOptions = {
   timestampFormat?: Intl.DateTimeFormatOptions;
   timestampLocale?: string;
   customEndpoint?: string;
+  silentError?: boolean;
 };
 
 export const defaultOptions: FarcasterEmbedOptions = {
@@ -11,4 +12,5 @@ export const defaultOptions: FarcasterEmbedOptions = {
     day: "numeric",
   },
   timestampLocale: "en-US",
+  silentError: false,
 };
