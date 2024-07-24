@@ -13,14 +13,24 @@ export const getCast = async (username: string, hash: string, options?: Farcaste
       throw new Error("Root cast has been deleted.");
     }
 
+    // Handle deep nested reply casts.
+    if (cast.result.casts[4] && cast.result.casts[4].hash.includes(hash)) {
+      return cast.result.casts[4];
+    }
+
+    // Handle deep nested reply casts.
+    if (cast.result.casts[3] && cast.result.casts[3].hash.includes(hash)) {
+      return cast.result.casts[3];
+    }
+
+    // Handle weird reply to a cast in a channel returning the original cast.
+    // We need to check if the username and hash are matching the linked cast to render the right one.
+    // Very weird API, but it's the only way to get the right cast.
     if (
       cast.result.casts[2] &&
       cast.result.casts[2].author.username === username &&
       cast.result.casts[2].hash.includes(hash)
     ) {
-      // Handle weird reply to a cast in a channel returning the original cast.
-      // We need to check if the username and hash are matching the linked cast to render the right one.
-      // Very weird API, but it's the only way to get the right cast.
       return cast.result.casts[2];
     }
 
