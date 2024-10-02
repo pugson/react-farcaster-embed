@@ -1,9 +1,9 @@
 import Linkify from "linkify-react";
-import { ReplyIcon, RecastIcon, LikeIcon, BookmarkIcon, WarpcastIcon } from "./icons";
+import type { FarcasterEmbedOptions } from "../options";
 import type { CastData } from "../types";
 import { CastImages } from "./cast-images";
 import { CastVideos } from "./cast-videos";
-import type { FarcasterEmbedOptions } from "../options";
+import { LikeIcon, RecastIcon, ReplyIcon, WarpcastIcon } from "./icons";
 
 const linkifyOptions = {
   className: "farcaster-embed-body-link",
@@ -58,7 +58,6 @@ export function CastEmbed({
   const replies = cast.replies && cast.replies.count;
   const likes = cast.reactions && cast.reactions.count;
   const recasts = cast.combinedRecastCount ? cast.combinedRecastCount : cast.recasts.count;
-  const watches = cast.watches && cast.watches.count;
   const images = cast.embeds && cast.embeds.images;
   const hasImages = images && images.length > 0;
   const hasVideos = cast.embeds && cast.embeds.videos && cast.embeds.videos.length > 0;
@@ -213,12 +212,6 @@ export function CastEmbed({
             <a className="farcaster-embed-stats-link" href={warpcastUrl} target="_blank">
               <LikeIcon />
               <span>{likes.toLocaleString("en-US")}</span>
-            </a>
-          </li>
-          <li>
-            <a className="farcaster-embed-stats-link" href={warpcastUrl} target="_blank">
-              <BookmarkIcon />
-              <span>{watches.toLocaleString("en-US")}</span>
             </a>
           </li>
         </ul>
