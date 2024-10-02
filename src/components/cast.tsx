@@ -73,13 +73,9 @@ export function CastEmbed({
       <div>
         <div className="farcaster-embed-metadata">
           <a href={profileUrl} className="farcaster-embed-avatar-link">
-            <img
-              src={author.pfp.url}
-              alt={`@${author.username}`}
-              width={48}
-              height={48}
-              className="farcaster-embed-author-avatar"
-            />
+            <div className="farcaster-embed-author-avatar-container">
+              <img src={author.pfp.url} alt={`@${author.username}`} className="farcaster-embed-author-avatar" />
+            </div>
           </a>
           <div className="farcaster-embed-author">
             <p className="farcaster-embed-author-display-name">{author.displayName}</p>
