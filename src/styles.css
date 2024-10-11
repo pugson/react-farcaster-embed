@@ -212,6 +212,7 @@
   align-items: center;
   gap: 0.25rem;
   padding: 0.25rem !important;
+  padding-left: calc(0.25rem + 3px) !important;
   margin-top: 0.75rem !important;
   position: relative;
 }
@@ -232,6 +233,11 @@
   z-index: -1;
   pointer-events: none;
   transition: 0.15s ease opacity;
+}
+
+.farcaster-embed-channel::before {
+  left: 0;
+  bottom: -1px;
 }
 
 .farcaster-embed-url-link::before,
