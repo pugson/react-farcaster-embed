@@ -182,7 +182,7 @@ export function CastEmbed({
             <div className="farcaster-embed-channel">
               {cast.tags[0].imageUrl && (
                 <div className="farcaster-embed-channel-avatar-container">
-                  <img src={cast.tags[0].imageUrl} alt={cast.tags[0].name} className="farcaster-embed-channel-avatar" />
+                  <img src={cast.tags[0].imageUrl} alt={cast.tags[0].name} className="farcaster-embed-channel-avatar" width={16} height={16} />
                 </div>
               )}
               {cast.tags[0].name && <p className="farcaster-embed-channel-name">{cast.tags[0].name}</p>}
