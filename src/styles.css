@@ -219,6 +219,7 @@
   align-items: center;
   gap: 0.25rem;
   padding: 0.25rem !important;
+  padding-left: calc(0.25rem + 3px) !important;
   margin-top: 0.75rem !important;
   position: relative;
 }
@@ -242,7 +243,7 @@
 }
 
 .farcaster-embed-channel::before {
-  left: -1px;
+  left: 0;
   bottom: -1px;
 }
 
@@ -261,9 +262,17 @@
   opacity: 1;
 }
 
-.farcaster-embed-channel-avatar {
-  display: inline-block;
+.farcaster-embed-channel-avatar-container {
+  width: 16px;
+  height: 16px;
   border-radius: 3px;
+  overflow: hidden;
+}
+
+.farcaster-embed-channel-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .farcaster-embed-channel-name {
