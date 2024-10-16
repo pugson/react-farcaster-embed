@@ -74,7 +74,13 @@ export function CastEmbed({
         <div className="farcaster-embed-metadata">
           <a href={profileUrl} className="farcaster-embed-avatar-link">
             <div className="farcaster-embed-author-avatar-container">
-              <img src={author.pfp.url} alt={`@${author.username}`} className="farcaster-embed-author-avatar" />
+              <img
+                src={author.pfp.url}
+                alt={`@${author.username}`}
+                width={48}
+                height={48}
+                className="farcaster-embed-author-avatar"
+              />
             </div>
           </a>
           <div className="farcaster-embed-author">
@@ -144,13 +150,15 @@ export function CastEmbed({
                   <div key={quoteCast.hash} className="farcaster-embed-quote-cast">
                     <div className="farcaster-embed-metadata">
                       <div className="farcaster-embed-avatar-link">
-                        <img
-                          src={quoteCast.author.pfp.url}
-                          alt={`@${quoteCast.author.username}`}
-                          width={20}
-                          height={20}
-                          className="farcaster-embed-author-avatar"
-                        />
+                        <div className="farcaster-embed-quote-cast-author-avatar-container">
+                          <img
+                            src={quoteCast.author.pfp.url}
+                            alt={`@${quoteCast.author.username}`}
+                            width={20}
+                            height={20}
+                            className="farcaster-embed-author-avatar"
+                          />
+                        </div>
                       </div>
                       <div className="farcaster-embed-author">
                         <p className="farcaster-embed-author-display-name">{quoteCast.author.displayName}</p>
@@ -178,7 +186,13 @@ export function CastEmbed({
             <div className="farcaster-embed-channel">
               {cast.tags[0].imageUrl && (
                 <div className="farcaster-embed-channel-avatar-container">
-                  <img src={cast.tags[0].imageUrl} alt={cast.tags[0].name} className="farcaster-embed-channel-avatar" width={16} height={16} />
+                  <img
+                    src={cast.tags[0].imageUrl}
+                    alt={cast.tags[0].name}
+                    className="farcaster-embed-channel-avatar"
+                    width={16}
+                    height={16}
+                  />
                 </div>
               )}
               {cast.tags[0].name && <p className="farcaster-embed-channel-name">{cast.tags[0].name}</p>}
