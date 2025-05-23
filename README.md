@@ -40,7 +40,7 @@ Display an embedded cast from Farcaster in your React app. Works with Next.js SS
 - [x] Renders the cast's content with links
 - [x] Shows the channel name and avatar
 - [x] Shows counts for replies, likes, recasts + quotes, watches
-- [x] Adds a link to the cast on Warpcast
+- [x] Adds a link to the cast on Farcaster
 - [x] Renders images inline
 - [x] Renders videos inline
 - [x] Renders rich embeds for links
@@ -68,8 +68,8 @@ import { FarcasterEmbed } from "react-farcaster-embed";
 import "react-farcaster-embed/dist/styles.css"; // include default styles or write your own
 
 
-// use warpcast url
-<FarcasterEmbed url="https://warpcast.com/pugson/0x4294c797" />
+// use farcaster url
+<FarcasterEmbed url="https://farcaster.xyz/pugson/0x4294c797" />
 
 // or username and hash of the cast
 <FarcasterEmbed username="dwr" hash="0x48d47343" />
@@ -94,8 +94,8 @@ And then use the component in your client component using a special import:
 ```jsx
 import { FarcasterEmbed } from "react-farcaster-embed/dist/client";
 
-// use warpcast url
-<FarcasterEmbed url="https://warpcast.com/pugson/0x4294c797" />
+// use farcaster url
+<FarcasterEmbed url="https://farcaster.xyz/pugson/0x4294c797" />
 
 // or username and hash of the cast
 <FarcasterEmbed username="dwr" hash="0x48d47343" />
@@ -115,7 +115,7 @@ You can change the color of the component by changing its parent's color or addi
 
 ## Custom Endpoint
 
-In case you need to self host the Warpcast Client API proxy, you can [fork this repo](https://github.com/pugson/farcaster-api-proxy) and set the `customEndpoint` option in the `FarcasterEmbed` component.
+In case you need to self host the Farcaster Client API proxy, you can [fork this repo](https://github.com/pugson/farcaster-api-proxy) and set the `customEndpoint` option in the `FarcasterEmbed` component.
 
 Easiest way to do this is to make a wrapper component with that option applied. Example:
 
@@ -140,12 +140,14 @@ await fetch(`${options?.customEndpoint}/${username}/${hash}`);
 
 ## Feeding your own cast JSON into the component
 
-Warpcast's API will not return anything when the cast has been deleted, so this is useful if you want to display deleted casts from archival data using your own indexer. Use the `castData` prop to pass in the cast's JSON into the component to render.
+Farcaster's API will not return anything when the cast has been deleted, so this is useful if you want to display deleted casts from archival data using your own indexer. Use the `castData` prop to pass in the cast's JSON into the component to render.
 
 ```jsx
-const data = { /* cast data coming from your own indexer or Neynar */ };
+const data = {
+  /* cast data coming from your own indexer or Neynar */
+};
 
-<FarcasterEmbed castData={data} />
+<FarcasterEmbed castData={data} />;
 ```
 
 ## Prevent errors for deleted casts
@@ -169,7 +171,7 @@ export const FarcasterEmbed = (props) => (
 
 ## Found it useful?
 
-Follow me on [Farcaster](https://farcaster.com/pugson) or [Twitter](https://twitter.com/pugson).
+Follow me on [Farcaster](https://farcaster.xyz/pugson) or [Twitter](https://twitter.com/pugson).
 
 Send me a tip in ETH or $DEGEN to
 

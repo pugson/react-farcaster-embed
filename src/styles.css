@@ -318,20 +318,20 @@
   opacity: 0.5;
 }
 
-.farcaster-embed-warpcast-icon {
+.farcaster-embed-farcaster-icon {
   display: flex;
 }
 
-.farcaster-embed-warpcast-link {
+.farcaster-embed-farcaster-link {
   display: inline-block;
   transition: transform 0.15s ease-out;
 }
 
-.farcaster-embed-warpcast-link:hover {
+.farcaster-embed-farcaster-link:hover {
   transform: scale(1.1);
 }
 
-.farcaster-embed-warpcast-link:active {
+.farcaster-embed-farcaster-link:active {
   transform: scale(0.95);
 }
 

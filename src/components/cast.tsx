@@ -3,7 +3,7 @@ import type { FarcasterEmbedOptions } from "../options";
 import type { CastData } from "../types";
 import { CastImages } from "./cast-images";
 import { CastVideos } from "./cast-videos";
-import { LikeIcon, RecastIcon, ReplyIcon, WarpcastIcon } from "./icons";
+import { LikeIcon, RecastIcon, ReplyIcon, FarcasterIcon } from "./icons";
 
 const linkifyOptions = {
   className: "farcaster-embed-body-link",
@@ -42,7 +42,7 @@ export function CastEmbed({
   if (!cast) return null;
 
   const author = cast.author;
-  const profileUrl = `https://warpcast.com/~/profiles/${author.fid}`;
+  const profileUrl = `https://farcaster.xyz/~/profiles/${author.fid}`;
   const publishedAt = new Date(cast.timestamp);
   const timestamp = publishedAt.toLocaleString(options.timestampLocale, options.timestampFormat);
   const fullTimestamp = publishedAt.toLocaleString("en-US", {
@@ -54,7 +54,7 @@ export function CastEmbed({
     second: "2-digit",
     hour12: true,
   });
-  const warpcastUrl = `https://warpcast.com/${author.username}/${cast.hash}`;
+  const farcasterUrl = `https://farcaster.xyz/${author.username}/${cast.hash}`;
   const replies = cast.replies && cast.replies.count;
   const likes = cast.reactions && cast.reactions.count;
   const recasts = cast.combinedRecastCount ? cast.combinedRecastCount : cast.recasts.count;
@@ -103,6 +103,7 @@ export function CastEmbed({
                 const { description, domain, image, title, url, useLargeImage } = item.openGraph || {};
                 const isTwitter = domain === "twitter.com" || domain === "t.co" || domain === "x.com";
 
+                if (domain === "farcaster.xyz") return null;
                 if (domain === "warpcast.com") return null;
 
                 if (useLargeImage) {
@@ -203,27 +204,27 @@ export function CastEmbed({
       <div className="farcaster-embed-stats">
         <ul>
           <li>
-            <a className="farcaster-embed-stats-link" href={warpcastUrl} target="_blank">
+            <a className="farcaster-embed-stats-link" href={farcasterUrl} target="_blank">
               <ReplyIcon />
               <span>{replies.toLocaleString("en-US")}</span>
             </a>
           </li>
           <li>
-            <a className="farcaster-embed-stats-link" href={warpcastUrl} target="_blank">
+            <a className="farcaster-embed-stats-link" href={farcasterUrl} target="_blank">
               <RecastIcon />
               <span>{recasts.toLocaleString("en-US")}</span>
             </a>
           </li>
           <li>
-            <a className="farcaster-embed-stats-link" href={warpcastUrl} target="_blank">
+            <a className="farcaster-embed-stats-link" href={farcasterUrl} target="_blank">
               <LikeIcon />
               <span>{likes.toLocaleString("en-US")}</span>
             </a>
           </li>
         </ul>
-        <div className="farcaster-embed-warpcast-icon">
-          <a href={warpcastUrl} title="Show on Warpcast" target="_blank" className="farcaster-embed-warpcast-link">
-            <WarpcastIcon />
+        <div className="farcaster-embed-farcaster-icon">
+          <a href={farcasterUrl} title="Show on Farcaster" target="_blank" className="farcaster-embed-farcaster-link">
+            <FarcasterIcon />
           </a>
         </div>
       </div>
