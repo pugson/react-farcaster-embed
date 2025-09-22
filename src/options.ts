@@ -3,7 +3,7 @@ export type FarcasterEmbedOptions = {
   timestampLocale?: string;
   customEndpoint?: string;
   silentError?: boolean;
-  displayLinkLogo?: boolean;
+  hideFarcasterLogo?: boolean;
 };
 
 export const defaultOptions: FarcasterEmbedOptions = {
@@ -14,5 +14,5 @@ export const defaultOptions: FarcasterEmbedOptions = {
   },
   timestampLocale: "en-US",
   silentError: false,
-  displayLinkLogo: true,
+  hideFarcasterLogo: false,
 };
