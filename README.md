@@ -169,6 +169,14 @@ export const FarcasterEmbed = (props) => (
 );
 ```
 
+## Hide Farcaster branding
+
+You can hide the Farcaster logo link by setting the `hideFarcasterLogo` option to `true`.
+
+```jsx
+<FarcasterEmbed {...props} options={{ hideFarcasterLogo: true }} />
+```
+
 ## Found it useful?
 
 Follow me on [Farcaster](https://farcaster.xyz/pugson) or [Twitter](https://twitter.com/pugson).
