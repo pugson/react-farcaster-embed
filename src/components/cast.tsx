@@ -222,11 +222,13 @@ export function CastEmbed({
             </a>
           </li>
         </ul>
-        <div className="farcaster-embed-farcaster-icon">
-          <a href={farcasterUrl} title="Show on Farcaster" target="_blank" className="farcaster-embed-farcaster-link">
-            <FarcasterIcon />
-          </a>
-        </div>
+        {options.displayLinkLogo && (
+          <div className="farcaster-embed-farcaster-icon">
+            <a href={farcasterUrl} title="Show on Farcaster" target="_blank" className="farcaster-embed-farcaster-link">
+              <FarcasterIcon />
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );
